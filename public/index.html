@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Pokédex</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="entete">
+            <div class="logo">●</div>
+            <div>
+                <h1>Mon Pokédex</h1>
+                <p>TP Node.js — Recherche de Pokémon</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="bloc-recherche">
+            <label for="recherche">Rechercher un Pokémon</label>
+            <div class="barre-recherche">
+                <div class="champ">
+                    <input id="recherche" type="text" placeholder="Nom ou numéro (ex : Pikachu)" autocomplete="off">
+                    <div id="suggestions" class="suggestions" hidden></div>
+                </div>
+                <button id="chercher">Rechercher</button>
+                <button id="hasard" class="bouton-secondaire">Au hasard</button>
+                <button id="tous" class="bouton-secondaire">Tous les Pokémon</button>
+            </div>
+            <p id="message" class="message" role="status">Choisis un Pokémon pour voir sa fiche.</p>
+        </section>
+
+        <div class="contenu">
+            <section class="fiche" aria-label="Fiche du Pokémon">
+                <div class="titre-fiche">
+                    <span>FICHE POKÉMON</span>
+                    <span id="numero">N° —</span>
+                </div>
+                <div class="visuel" id="visuel">
+                    <!-- Grande image du Pokémon -->
+                    <img id="image" alt="" hidden>
+                    <p id="aucune-image">Choisis un Pokémon</p>
+
+                    <!-- Petite miniature et petit sprite en haut à droite -->
+                    <div class="petites-images" id="petites-images" hidden>
+                        <div class="petite-image" id="bloc-miniature" title="Miniature">
+                            <img id="miniature" alt="Miniature du Pokémon">
+                        </div>
+                        <div class="petite-image" id="bloc-sprite" title="Sprite">
+                            <img id="mini-sprite" alt="Sprite du Pokémon">
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <h2 id="nom">Aucun Pokémon sélectionné</h2>
+                    <p id="nom-anglais" class="sous-titre"></p>
+                    <div id="types" class="types"></div>
+                    <h3>Statistiques</h3>
+                    <div id="statistiques" class="statistiques">
+                        <p class="sous-titre">Les informations apparaîtront ici.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="liste" id="section-liste" hidden>
+                <div class="titre-liste">
+                    <h2>Tous les Pokémon</h2>
+                    <span id="nombre"></span>
+                </div>
+                <p class="explication">Clique sur un nom pour afficher sa fiche.</p>
+                <div id="liste-pokemons" class="noms-pokemons"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer>TP Pokédex — Node.js, Express, HTML, CSS et JavaScript</footer>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+/* Mise en page simple du Pokédex */
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background: #f3f4f6;
+    color: #253041;
+    font-family: Arial, sans-serif;
+    line-height: 1.45;
+}
+header { background: #bb3535; color: white; }
+.entete { max-width: 1050px; margin: auto; padding: 22px 20px; display: flex; align-items: center; gap: 15px; }
+.logo { width: 44px; height: 44px; background: white; color: #bb3535; border: 5px solid #273547; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; }
+h1 { margin: 0; font-size: 26px; }
+header p { margin: 2px 0 0; font-size: 14px; opacity: 0.9; }
+main { max-width: 1050px; margin: 26px auto; padding: 0 20px; }
+.bloc-recherche, .fiche, .liste { background: white; border: 1px solid #e2e5e8; border-radius: 9px; }
+.bloc-recherche { padding: 22px; margin-bottom: 22px; }
+label { display: block; font-weight: bold; margin-bottom: 10px; }
+.barre-recherche { display: flex; gap: 9px; flex-wrap: wrap; }
+.champ { position: relative; flex: 1 1 260px; }
+input { width: 100%; min-height: 42px; padding: 10px 12px; border: 1px solid #cbd1d8; border-radius: 5px; font: inherit; }
+input:focus { outline: 2px solid #e0a0a0; border-color: #bb3535; }
+button { min-height: 42px; padding: 10px 15px; background: #bb3535; border: 1px solid #bb3535; border-radius: 5px; color: white; font: inherit; cursor: pointer; }
+button:hover { background: #9f2828; }
+.bouton-secondaire { color: #263344; border-color: #cbd1d8; background: #fff; }
+.bouton-secondaire:hover { background: #f4f5f6; }
+.message { color: #66717f; font-size: 14px; margin: 12px 0 0; }
+.suggestions { position: absolute; z-index: 5; top: calc(100% + 3px); left: 0; right: 0; padding: 4px; background: white; border: 1px solid #cbd1d8; border-radius: 5px; box-shadow: 0 6px 18px #24324720; max-height: 270px; overflow-y: auto; }
+.suggestions button { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 10px; text-align: left; border: 0; border-radius: 4px; background: white; color: #253041; min-height: 36px; padding: 7px 9px; }
+.suggestions button:hover { background: #f2f3f4; }
+.suggestions small { color: #7a8390; }
+.contenu { display: grid; grid-template-columns: 400px minmax(0, 1fr); gap: 22px; align-items: start; }
+.fiche {
+    overflow: hidden;
+    /* Ces couleurs changent selon le type du Pokémon. */
+    --couleur-type: #bb3535;
+    --fond-type: #e9f0f1;
+}
+.titre-fiche { background: #263344; color: white; display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; padding: 13px 18px; letter-spacing: .3px; }
+.visuel {
+    position: relative;
+    min-height: 220px;
+    background: var(--fond-type);
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+/* L'illustration principale vient du dossier FILES/images. */
+.visuel > img { width: 190px; height: 190px; object-fit: contain; }
+.visuel p { color: #66717f; }
+/* Les deux petites images restent dans le coin de la fiche. */
+.petites-images {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 6px;
+}
+.petite-image {
+    width: 52px;
+    height: 52px;
+    border: 1px solid #d5d9df;
+    border-radius: 6px;
+    background: #ffffffd9;
+    display: grid;
+    place-items: center;
+}
+.petite-image img { width: 43px; height: 43px; object-fit: contain; }
+#bloc-sprite img { image-rendering: pixelated; }
+.petites-images[hidden], .petite-image[hidden] { display: none; }
+.description { padding: 21px; }
+h2 { font-size: 23px; margin: 0; }
+.sous-titre { color: #697584; margin: 4px 0 13px; font-size: 14px; }
+.types { display: flex; gap: 7px; margin-bottom: 21px; flex-wrap: wrap; }
+.type {
+    font-size: 13px;
+    background: var(--couleur-type);
+    color: white;
+    border: 1px solid transparent;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+h3 { font-size: 15px; margin: 0 0 12px; }
+.stat { display: grid; grid-template-columns: 95px 1fr 36px; gap: 10px; align-items: center; margin-bottom: 11px; font-size: 13px; }
+.barre { height: 8px; border-radius: 8px; background: #e6e9ee; overflow: hidden; }
+.barre span { height: 100%; display: block; background: var(--couleur-type); border-radius: 8px; }
+.valeur { text-align: right; }
+.liste { padding: 20px; }
+.titre-liste { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.titre-liste h2 { font-size: 20px; }
+.titre-liste span { color: #66717f; font-size: 14px; }
+.explication { font-size: 13px; color: #697584; margin: 7px 0 15px; }
+.noms-pokemons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; max-height: 575px; overflow-y: auto; }
+.noms-pokemons button { text-align: left; min-height: 36px; background: #f6f7f8; color: #253041; border: 1px solid #e5e8ec; padding: 7px 9px; font-size: 13px; }
+.noms-pokemons button:hover { background: #e9edf1; }
+.noms-pokemons span { color: #7b8794; margin-right: 7px; }
+footer { text-align: center; font-size: 12px; color: #77828e; padding: 25px; }
+@media (max-width: 750px) {
+    .contenu { grid-template-columns: 1fr; }
+    .barre-recherche > button { flex: 1 1 auto; }
+    /* Sur téléphone, les suggestions ne cachent pas les boutons. */
+    .suggestions { position: static; margin-top: 6px; box-shadow: none; }
+    .fiche, .liste { width: 100%; }
+}
+@media (max-width: 400px) {
+    .noms-pokemons { grid-template-columns: 1fr; }
+    .stat { grid-template-columns: 85px 1fr 30px; gap: 7px; }
+}
